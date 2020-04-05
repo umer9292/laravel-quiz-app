@@ -1,0 +1,18 @@
+textarea.form-control{
+    border: 1px solid #2b3553 !important;
+    border-radius: 8px !important;
+}
+
+textarea.form-control:focus{
+    border-color: #e14eca !important;
+}
+
+.sidebar .sidebar-wrapper .list-group-item {
+     border: none !important;
+     color: #e14eca; !important;
+ }
+
+.sidebar .sidebar-wrapper .list-group-item:hover {
+    background-color: #e14eca !important;
+    color: #fff; !important;
+}
