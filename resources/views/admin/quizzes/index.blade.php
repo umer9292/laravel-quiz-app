@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layouts.protected')
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="#">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">All Quizzes</li>
@@ -27,6 +27,7 @@
                                 <th scope="col">Number of Question</th>
                                 <th scope="col">Passing Marks</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -40,14 +41,24 @@
                                             <td>{{ $quiz->number_of_question }}</td>
                                             <td>{{ $quiz->passing_marks }}</td>
                                             <td>{{ $quiz->description }}</td>
+                                            <td>
+                                                @if($quiz->publish)
+                                                    <span class="badge badge-success">Published</span>
+                                                    @else
+                                                    <span class="badge badge-info">Pending</span>
+                                                @endif
+                                            </td>
                                             <td>{{ diff4Human($quiz->created_at) }}</td>
                                             <td>
-                                                <a href="{{ route('quiz.edit', $quiz->id) }}" class="btn btn-sm btn-success">
-                                                    <i class="fas fa-edit"></i> Edit
-                                                </a>
-                                                <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-sm btn-outline-secondary">
-                                                    Browse
-                                                </a>
+                                                <div class="btn-group">
+                                                    <a href="{{ route('quiz.edit', $quiz->id) }}" class="btn btn-sm btn-success mr-1">
+                                                        <i class="fas fa-edit"></i> Edit
+                                                    </a>
+
+                                                    <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-sm btn-warning">
+                                                        Browse
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

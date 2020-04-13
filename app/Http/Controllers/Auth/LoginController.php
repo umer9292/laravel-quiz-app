@@ -42,5 +42,7 @@ class LoginController extends Controller
     {
         if ($user->role->name == 'admin')
             $this->redirectTo = '/admin/dashboard';
+        else
+            $this->redirectTo = '/student/dashboard';
     }
 }

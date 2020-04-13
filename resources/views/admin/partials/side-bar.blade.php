@@ -13,11 +13,11 @@
                 </a>
             </li>
             <li>
-                <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <a data-toggle="collapse" href="#quizCollapse" aria-expanded="false" aria-controls="quizCollapse">
                     <i class="fas fa-tasks"></i>
                     <p>Manage Quiz</p>
                 </a>
-                <div class="list-group" id="collapseExample">
+                <div class="list-group" id="quizCollapse">
                     <a href="{{ route('quiz.index') }}" class="list-group-item list-group-item-action">
                         All Quizzes
                     </a>
@@ -37,6 +37,19 @@
                     <i class="fas fa-table"></i>
                     <p>Table List</p>
                 </a>
+            </li>
+            <li>
+                <a  href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
+                >
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p>{{ __('Sign Out') }}</p>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
         </ul>
     </div>

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layouts.protected')
 @section('breadcrumb')
 <li class="breadcrumb-item active" aria-current="page">Home</li>
 @endsection

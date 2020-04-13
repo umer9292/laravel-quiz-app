@@ -8,11 +8,61 @@ textarea.form-control:focus{
 }
 
 .sidebar .sidebar-wrapper .list-group-item {
-     border: none !important;
-     color: #e14eca; !important;
+    padding: 10px 16px 10px 70px;
+    font-size: 11px;
+    background: transparent !important;
+    border: none !important;
+    color: #fff; !important;
+    border-radius: 0 !important;
  }
 
-.sidebar .sidebar-wrapper .list-group-item:hover {
-    background-color: #e14eca !important;
-    color: #fff; !important;
+/*.sidebar .sidebar-wrapper .list-group-item:hover {*/
+/*    background-color: #e14eca !important;*/
+/*    color: #fff; !important;*/
+/*    background-image: linear-gradient(to bottom left,#e14eca,#ba54f5,#e14eca);*/
+/*}*/
+
+sidebar .logo .simple-text, .sidebar .logo .simple-text {
+    padding: 8px 0 8px 30px !important;
+    font-weight: bolder;
+}
+
+/* result table css */
+.total {
+    text-align: center;
+    padding: 18px 14px;
+    font-size: 28px;
+    background: #34a714; !important;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+    font-weight: 600;
+}
+
+.result-table > tbody > tr > td {
+    color: hsla(0, 4.8%, 4.1%, 0.7) !important;
+}
+
+.result-table, .result-table tbody{
+    background-color: #fff;
+}
+
+.result-table, .result-table tbody tr {
+    text-align: center !important;
+}
+
+.result-table, .result-table tbody tr td {
+    border: 1px solid #34a714; !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    padding: 15px 8px !important;
+}
+
+.result-table td, .result-table th, .result-table thead tr th {
+    color: #fff;
+    font-size: 18px !important;
+    text-transform: none !important;
+}
+
+.result-table, .result-table tbody, .result-text{
+    color: #34a714 !important;
 }

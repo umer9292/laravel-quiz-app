@@ -17,10 +17,34 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [
-    'as' => 'home',
-    'uses' => 'HomeController@index'
-]);
+
+
+Route::group(['prefix' => 'student', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [
+        'as' => 'student.dashboard',
+        'uses' => 'HomeController@index'
+    ]);
+
+    Route::get('/takequiz/{quiz}', [
+        'as' => 'take.quiz',
+        'uses' => 'HomeController@takeQuiz'
+    ]);
+
+    Route::get('/show/{quiz}/{question}', [
+        'as' => 'show.questions',
+        'uses' => 'HomeController@showQuestions'
+    ]);
+
+    Route::post('/store/{question}', [
+        'as' => 'store.answer',
+        'uses' => 'HomeController@storeAnswer'
+    ]);
+
+    Route::get('/result/{quiz}', [
+        'as' => 'quiz.result',
+        'uses' => 'HomeController@quizResult'
+    ]);
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [
@@ -29,5 +53,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     ]);
 
     Route::resource('quiz', 'QuizController');
+    Route::resource('question', 'QuestionController');
 
 });

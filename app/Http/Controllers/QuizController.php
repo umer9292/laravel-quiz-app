@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use App\Quiz;
 use App\User;
 use Illuminate\Http\Request;
@@ -46,6 +47,7 @@ class QuizController extends Controller
               'title' => $request->title,
               'user_id' => $user,
               'number_of_question' => $request->number_of_question,
+              'marks_per_question' => $request->marks_per_question,
               'passing_marks' => $request->passing_marks,
               'description' => $request->description,
               'publish' => $request->publish,
@@ -70,7 +72,9 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        return view('admin.questions.index');
+        $quizId = $quiz->id;
+        $totalQuestions = Question::where('quiz_id', $quizId)->count()+1;
+        return view('admin.quizzes.question', compact('quiz' , 'totalQuestions'));
     }
 
     /**
@@ -96,6 +100,7 @@ class QuizController extends Controller
         try{
             $quiz->title = $request->title;
             $quiz->number_of_question = $request->number_of_question;
+            $quiz->marks_per_question = $request->marks_per_question;
             $quiz->passing_marks = $request->passing_marks;
             $quiz->description = $request->description;
             $quiz->publish = $request->publish;

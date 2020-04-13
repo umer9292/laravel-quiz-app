@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminQuestionStore;
 use App\Question;
+use App\Quiz;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -35,7 +37,35 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $quizId = $request->quiz_id;
+            $numberOfQuestion = Quiz::where('id', $quizId)
+                ->select('number_of_question')
+                ->first();
+            $totalQuestions = Question::where('quiz_id', $quizId)->count()+1;
+
+            $newQuestion = [
+                "quiz_id" => $quizId,
+                "question" => $request->question,
+                "correct_answer" => $request->correct_answer,
+                "option_1" => $request->option_1,
+                "option_2" => $request->option_2,
+                "option_3" => $request->option_3,
+                "option_4" => $request->option_4,
+            ];
+
+            $question = Question::create($newQuestion);
+            if ($question) {
+                if($totalQuestions == $numberOfQuestion->number_of_question) {
+                    Quiz::where('id', $quizId)->update(['publish' => 1]);
+                }
+                return back()->with('success', 'Question Successfully Created');
+            }
+            else
+                return back()->with('error', 'Question Creating Error!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
     }
 
     /**
@@ -44,7 +74,7 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(AdminQuestionStore $question)
     {
         //
     }

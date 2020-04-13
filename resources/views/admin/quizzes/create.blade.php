@@ -14,11 +14,15 @@
                     <input type="text" id="title" class="form-control" name="title" placeholder="">
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <label for="number">Number of Questions</label>
                         <input type="number" id="number" class="form-control" name="number_of_question">
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
+                        <label for="marksPerQuestion">Marks Per Questions</label>
+                        <input type="number" id="marksPerQuestion" class="form-control" name="marks_per_question">
+                    </div>
+                    <div class="col-md-4 col-sm-12">
                         <label for="marks">Passing Marks</label>
                         <input type="number" id="marks" class="form-control" name="passing_marks">
                     </div>

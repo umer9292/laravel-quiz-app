@@ -17,7 +17,7 @@ class AdminAuthenticated
     public function handle($request, Closure $next)
     {
         if (Auth::user()->role->name == 'student') {
-            return redirect('/home')->with('message', 'You are Not Allowed To Access');
+            return redirect('student.dashboard')->with('message', 'You are Not Allowed To Access');
         }
         return $next($request);
     }
