@@ -40,12 +40,18 @@
                                     <td>
                                         <div class="btn-group">
                                             @if($quiz->quiztaken)
-                                                <a href="{{ route('quiz.result', $quiz->id) }}" class="btn btn-sm btn-primary">
-                                                    View Result
+                                                <a href="{{ route('quiz.result', $quiz->id) }}" class="element" data-toggle="tooltip" data-placement="top" title="View Result">
+                                                    <span class="fas fa-eye text-primary"></span>
+                                                </a> &nbsp;&nbsp;
+                                                <a href="{{ route('quiz.export.pdf', $quiz->id) }}" class="element" data-toggle="tooltip" data-placement="top" title="Export Pdf">
+                                                    <span class="fas fa-file-pdf text-danger"></span>
+                                                </a> &nbsp;&nbsp;
+                                                <a href="{{ route('quiz.export.excel', $quiz->id) }}" class="element"  data-toggle="tooltip" data-placement="top" title="Export Excel">
+                                                    <span class="fas fa-file-excel text-success"></span>
                                                 </a>
                                             @else
-                                                <a href="{{ route('take.quiz', $quiz->id) }}" class="btn btn-sm btn-warning">
-                                                    Take Quiz
+                                                <a href="{{ route('take.quiz', $quiz->id) }}" class="element"  data-toggle="tooltip" data-placement="top" title="Take Quiz">
+                                                    <span class="fas fa-edit"></span>
                                                 </a>
                                             @endif
                                         </div>

@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'frontend',
+    'uses' => 'FrontendController@index'
+]);
 
 Auth::routes();
-
-
 
 Route::group(['prefix' => 'student', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [
@@ -44,6 +43,16 @@ Route::group(['prefix' => 'student', 'middleware' => ['auth']], function () {
         'as' => 'quiz.result',
         'uses' => 'HomeController@quizResult'
     ]);
+
+    Route::get('/export-excel/{quiz}', [
+        'as' => 'quiz.export.excel',
+        'uses' => 'HomeController@export'
+    ]);
+
+    Route::get('/export-pdf/{quiz}', [
+        'as' => 'quiz.export.pdf',
+        'uses' => 'HomeController@createPdf'
+    ]);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
@@ -51,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         'as' => 'admin.dashboard',
         'uses' => 'AdminController@dashboard',
     ]);
+
 
     Route::resource('quiz', 'QuizController');
     Route::resource('question', 'QuestionController');

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\QuizExport;
 use App\Question;
+use Maatwebsite\Excel\Excel;
+use PDF;
 use App\Quiz;
 use App\QuizTaken;
 use App\QuizTest;
@@ -137,5 +140,46 @@ class HomeController extends Controller
             'correctAnswers',
             'findPercentage',
             'result'));
+    }
+
+    public function createPdf(Quiz $quiz)
+    {
+        $userId = Auth::user()->id;
+        $quizId = $quiz->id;
+
+        $questions = QuizTest::with('question')
+            ->where([
+                ['user_id', '=', $userId],
+                ['quiz_id', '=', $quizId],
+            ])
+            ->get();
+
+        $correctAnswers = $questions->filter(function ($value) {
+            return $value->answer_status == 1;
+        });
+
+        $totalMarks = $quiz->marks_per_question * $quiz->number_of_question;
+        $obtainMarks = $quiz->marks_per_question * count($correctAnswers);
+        $findPercentage = $obtainMarks / $totalMarks * 100;
+        $result = $findPercentage > $quiz->passing_marks ? 'Pass' : 'Fail';
+
+        $fileName = 'quiz-result'.now()->toDateTimeString().'.pdf';
+        $pdf = PDF::loadView('pdf.quiz-result', compact('quiz',
+            'questions',
+            'correctAnswers',
+            'findPercentage',
+            'result',
+            'totalMarks',
+            'obtainMarks'));
+        // If you want to store the generated pdf to the server then you can use the store function
+        $pdf->save(public_path().DIRECTORY_SEPARATOR.'quiz-result.pdf');
+        // Finally, you can download the file using download function
+        return $pdf->download($fileName);
+    }
+
+    public function export(Quiz $quiz)
+    {
+        $quizId = $quiz->id;
+        return \Maatwebsite\Excel\Facades\Excel::download(new QuizExport($quizId), 'quiz.xlsx');
     }
 }

@@ -1,12 +1,34 @@
+/* quiz form css */
 textarea.form-control{
     border: 1px solid #2b3553 !important;
     border-radius: 8px !important;
 }
-
 textarea.form-control:focus{
     border-color: #e14eca !important;
 }
 
+/* fixed plugin css */
+.fixed-plugin {
+    top: 300px !important;
+}
+
+/* login card css */
+.form-check input[type="checkbox"], .radio input[type="radio"] {
+    opacity: 1.5 !important;
+    visibility: unset!important;
+    margin-left: 0 !important;
+}
+
+/* admin dashboard page css */
+.status-card,  .card-body h2 {
+    margin-bottom: 5px !important;
+}
+.card-body i {
+    margin: 20px 0 0 20px  !important;
+    font-size: 60px !important;
+}
+
+/* sidebar css */
 .sidebar .sidebar-wrapper .list-group-item {
     padding: 10px 16px 10px 70px;
     font-size: 11px;
@@ -15,13 +37,6 @@ textarea.form-control:focus{
     color: #fff; !important;
     border-radius: 0 !important;
  }
-
-/*.sidebar .sidebar-wrapper .list-group-item:hover {*/
-/*    background-color: #e14eca !important;*/
-/*    color: #fff; !important;*/
-/*    background-image: linear-gradient(to bottom left,#e14eca,#ba54f5,#e14eca);*/
-/*}*/
-
 sidebar .logo .simple-text, .sidebar .logo .simple-text {
     padding: 8px 0 8px 30px !important;
     font-weight: bolder;
@@ -37,32 +52,37 @@ sidebar .logo .simple-text, .sidebar .logo .simple-text {
     border-radius: 20px 20px 0 0;
     font-weight: 600;
 }
-
 .result-table > tbody > tr > td {
     color: hsla(0, 4.8%, 4.1%, 0.7) !important;
 }
-
 .result-table, .result-table tbody{
     background-color: #fff;
 }
-
 .result-table, .result-table tbody tr {
     text-align: center !important;
 }
-
 .result-table, .result-table tbody tr td {
     border: 1px solid #34a714; !important;
     font-weight: bold !important;
     font-size: 16px !important;
     padding: 15px 8px !important;
 }
-
 .result-table td, .result-table th, .result-table thead tr th {
     color: #fff;
     font-size: 18px !important;
     text-transform: none !important;
 }
-
 .result-table, .result-table tbody, .result-text{
     color: #34a714 !important;
+}
+
+/* frontend quiz cards css */
+.frontend-bg{
+    background: #475a6b;
+}
+.quiz-card{
+    border-radius: 25px !important;
+}
+.quiz-card .card-header, .card-footer{
+    background: #2d3945 !important;
 }

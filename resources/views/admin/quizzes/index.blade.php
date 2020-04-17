@@ -13,7 +13,7 @@
                             <i class="tim-icons icon-bell-55 text-primary"></i>
                             Quiz List
                         </h3>
-                        <a href="{{ route('quiz.create') }}" class="btn btn-sm btn-primary btn-simple mr-5">
+                        <a href="{{ route('quiz.create') }}" class="btn btn-sm btn-primary btn-simple">
                             <i class="fas fa-plus"></i>
                             Add Quiz
                         </a>
@@ -51,11 +51,11 @@
                                             <td>{{ diff4Human($quiz->created_at) }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="{{ route('quiz.edit', $quiz->id) }}" class="btn btn-sm btn-success mr-1">
-                                                        <i class="fas fa-edit"></i> Edit
+                                                    <a href="{{ route('quiz.edit', $quiz->id) }}" class="btn btn-sm btn-primary btn-simple active">
+                                                        Edit
                                                     </a>
 
-                                                    <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-sm btn-warning">
+                                                    <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-sm btn-primary btn-simple">
                                                         Browse
                                                     </a>
                                                 </div>

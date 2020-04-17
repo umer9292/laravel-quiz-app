@@ -66,6 +66,9 @@
 <script src="{{ asset('js/demo.js') }}"></script>
 @yield('extra_js')
 <script>
+    $('.element').tooltip()
+</script>
+<script>
     $(document).ready(function() {
         $().ready(function() {
             $sidebar = $('.sidebar');

@@ -4,10 +4,55 @@
 @endsection
 
 @section('content')
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card status-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <i class="fas fa-file-alt fa-3x text-success"></i>
+                                <div class="text-right">
+                                    <h2>{{$totalQuizzes}}</h2>
+                                    <h4>Total <br> Quizzes</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card status-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <i class="fas fa-users fa-3x text-primary"></i>
+                                <div class="text-right">
+                                    <h2>{{$totalStudents}}</h2>
+                                    <h4>Total <br> Students</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card status-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <i class="fas fa-tasks fa-3x text-warning"></i>
+                                <div class="text-right">
+                                    <h2>{{$quizzesTaken}}</h2>
+                                    <h4>Quizzes <br> Taken</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
-                <div class="card-header ">
+                <div class="card-header">
                     <div class="row">
                         <div class="col-sm-6 text-left">
                             <h5 class="card-category">Total Shipments</h5>
